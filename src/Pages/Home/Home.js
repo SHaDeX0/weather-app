@@ -150,7 +150,7 @@ const Home = () => {
 					</div>
 				</div>
 				<div id='fiveDays'>
-					<h1>5 Days Forecast</h1>
+					<h1 style={{ color: 'rgb(200, 200, 255)' }}>5 Days Forecast</h1>
 				</div>
 				<div id='sevenDays' className='sevenDays'>
 					{data7.list ? (
