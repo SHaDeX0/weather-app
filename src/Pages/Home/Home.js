@@ -3,13 +3,12 @@ import axios from 'axios'
 import './Home.css'
 
 const Home = () => {
-	// const [coords, setCoords] = useState({ latitude: 12.8997, longitude: 74.985 })
 	const [coords, setCoords] = useState({})
 	const [location, setLocation] = useState('')
-	const api = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=d188ff69879accafe02475a09baecc47`
-	const locApi = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=d188ff69879accafe02475a09baecc47`
-	const api7days = `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=36fed135035d571787b23407fdf74e63`
-	const locApi7days = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=36fed135035d571787b23407fdf74e63`
+	const api = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=${process.env.REACT_APP_API}`
+	const locApi = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API}`
+	const api7days = `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=${process.env.REACT_APP_API}`
+	const locApi7days = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${process.env.REACT_APP_API}`
 	const [weatherData, setWeatherData] = useState('')
 	const [data7, setData7] = useState('')
 
@@ -84,25 +83,6 @@ const Home = () => {
 						zIndex: 1,
 						fontSize: '4rem',
 						padding: '1% 2.5%',
-					}}
-					onClick={() => {
-						navigator.geolocation.getCurrentPosition(pos => {
-							setTheCoordinates(pos).then(res => {
-								axios
-									.get(api)
-									.then(data => {
-										setWeatherData(data.data)
-									})
-									.catch(err => console.log(err))
-
-								axios
-									.get(api7days)
-									.then(({ data }) => {
-										setData7(data)
-									})
-									.catch(err => console.log(err))
-							})
-						})
 					}}
 				>
 					WeatherX
